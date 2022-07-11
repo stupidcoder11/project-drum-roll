@@ -35,11 +35,21 @@ function playAudio(audioFile) {
   }
 }
 
+// Applies animation in the button element
+function buttonAnimation(currentKey) {
+  const button = document.querySelector(`.${currentKey}`);
+  button.classList.add("game-over");
+  setTimeout(() => {
+    button.classList.remove("game-over");
+  }, 100);
+}
+
 // Registers all the buttons with click event and plays the respective audio file associated with the key mentioned on it
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", (event) => {
     let audioFile = keyAudioMapper(event?.target?.innerHTML);
     playAudio(audioFile);
+    buttonAnimation(event.target.innerHTML);
   });
 });
 
@@ -47,4 +57,5 @@ document.querySelectorAll("button").forEach((button) => {
 document.addEventListener("keydown", (event) => {
   let audioFile = keyAudioMapper(event?.key);
   playAudio(audioFile);
+  buttonAnimation(event.key);
 });
