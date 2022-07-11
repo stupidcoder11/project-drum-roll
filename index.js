@@ -35,7 +35,7 @@ function playAudio(audioFile) {
   }
 }
 
-// Applies animation in the button element
+// Adds animation in the button element
 function buttonAnimation(currentKey) {
   const button = document.querySelector(`.${currentKey}`);
   button.classList.add("game-over");
