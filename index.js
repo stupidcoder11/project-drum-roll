@@ -35,15 +35,19 @@ function playAudio(audioFile) {
   }
 }
 
+// Adds animation for the button key
+function buttonAnimation(key) {}
+
 // Registers all the buttons with click event and plays the respective audio file associated with the key mentioned on it
 document.querySelectorAll("button").forEach((button) => {
-  const key = button.classList[0];
-  const audioFile = keyAudioMapper(key);
-  button.addEventListener("click", playAudio(audioFile));
+  button.addEventListener("click", (event) => {
+    let audioFile = keyAudioMapper(event?.target?.innerHTML);
+    playAudio(audioFile);
+  });
 });
 
 // Registers the keys when they're pressed (a.k.a onkeydown event)
-document.onkeydown = ({ key }) => {
-  let audioFile = keyAudioMapper(key);
+document.addEventListener("keydown", (event) => {
+  let audioFile = keyAudioMapper(event?.key);
   playAudio(audioFile);
-};
+});
