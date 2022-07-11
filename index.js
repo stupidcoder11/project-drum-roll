@@ -35,9 +35,6 @@ function playAudio(audioFile) {
   }
 }
 
-// Adds animation for the button key
-function buttonAnimation(key) {}
-
 // Registers all the buttons with click event and plays the respective audio file associated with the key mentioned on it
 document.querySelectorAll("button").forEach((button) => {
   button.addEventListener("click", (event) => {
